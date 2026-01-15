@@ -160,6 +160,13 @@ h3 {
   }
 }
 
+.event-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
 
 .event-buttons > button {
   background-color: #282c34;
@@ -170,4 +177,5 @@ h3 {
   border-radius: 0.5rem;
   cursor: pointer;
   font-size: 1rem;
+  max-width: 45%;
 }
