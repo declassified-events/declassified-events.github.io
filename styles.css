@@ -1,5 +1,81 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   background-color: #16181d;
   font-family: Helvetica, Arial, sans-serif;
-  color: #dadce0
+  color: #dadce0;
+  scroll-behavior: smooth;
 }
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  background-color: #0a0a0a;
+  height: 48px;
+  padding: 12px;
+}
+
+a {
+  color: #dadce0;
+}
+
+p {
+  max-width: 800px;
+}
+
+section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 0.2rem solid #dadce0;
+  padding: 1rem;
+}
+
+.header-title {
+  display: none;
+}
+
+@media screen and (min-width: 660px) {
+  .header-title {
+    display: block;
+  }
+}
+
+.artist-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: nowrap;  
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+}
+
+.artist-card {
+  max-width: 250px;
+  flex: 0 0 auto;
+  background-color: #0a0a0a;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.artist-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
