@@ -70,21 +70,11 @@
     </section>
     <section id="events">
       <h2>Events</h2>      
-      <div class="event-card">
-        <img src="images/sample-poster.png" width="600">
-        <ul>
-          <li>Name of Event</li>
-          <li>Date of Event</li>
-          <li>Location of Event</li>
-          <li>Lineup:</li>
-          <ul>
-            <li>Artist 1</li>
-            <li>Artist 2</li>
-            <li>Artist 3</li>
-            <li>Artist 4</li>
-          </ul>
-          <li>Ticket Link</li>
-        </ul>
+      <div id="event-container">
+      </div>
+      <div class="event-buttons">
+        <button id="prev-event">Previous Event</button>
+        <button id="next-event">Next Event</button>
       </div>
     </section>
     <section id="news">
@@ -98,5 +88,71 @@
         Founded in 2026, Declassified aims to bring high-quality events that center the community, establishments and artists that make the scene what it is.
       </p>
     </section>
+    <script>
+      const events = [
+        {
+          name: "Event One",
+          date: "2024-07-15",
+          location: "London, UK",
+          lineup: ["Artist A", "Artist B", "Artist C"],
+          ticketLink: "ticketLink.com",
+          poster: "images/sample-poster.png"
+        },
+        {
+          name: "Event Two",
+          date: "2024-08-20",
+          location: "Manchester, UK",
+          lineup: ["Artist D", "Artist E", "Artist F"],
+          ticketLink: "ticketLink.com",
+          poster: "images/sample-poster.png"
+        },
+        {
+          name: "Event Three",
+          date: "2024-09-10",
+          location: "Bristol, UK",
+          lineup: ["Artist G", "Artist H", "Artist I"],
+          ticketLink: "ticketLink.com",
+          poster: "images/sample-poster.png"
+        }
+      ]
+      const eventContainer = document.getElementById('event-container');
+      const nextEventButton = document.getElementById('next-event');
+      const prevEventButton = document.getElementById('prev-event');
+      let currentEventIndex = 0;
+      renderEvent(currentEventIndex);
+
+      nextEventButton.addEventListener('click', () => {
+        currentEventIndex = currentEventIndex + 1;
+        currentEventIndex = currentEventIndex > events.length - 1 ? 0 : currentEventIndex;
+        renderEvent(currentEventIndex);
+      });
+
+      prevEventButton.addEventListener('click', () => {
+        currentEventIndex = currentEventIndex - 1;
+        currentEventIndex = currentEventIndex < 0 ? events.length - 1 : currentEventIndex;
+        renderEvent(currentEventIndex);
+      });
+
+      function renderEvent(index) {
+        const event = events[index];
+        const artists = event.lineup.map(artist => `<li>${artist}</li>`).join('');
+        const html = `
+          <div class="event-card">
+            <img src="${event.poster}" width="600">
+            <ul>
+              <li>${event.name}</li>
+              <li>${event.date}</li>
+              <li>${event.location}</li>
+              <li>Lineup:</li>
+              <ul>
+                ${artists}
+              </ul>
+              <li>${event.ticketLink}</li>
+            </ul>
+          </div>`;
+        eventContainer.innerHTML = html;
+      }
+      
+    </script>
   </body>
 </html>
